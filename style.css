@@ -1,0 +1,40 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+
+
+
+
+
+.tickcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows:  1fr 1fr 1fr;
+    
+    width: 400px;
+    height: 400px;
+}
+
+.tickitem {
+    display: flex;
+    background-color: rgb(104, 124, 124);
+    justify-content: center;
+    border: 2px solid rgb(105, 97, 97);
+    height: 131px;
+    width: 131px;
+    align-items: center;
+    
+}
+
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-left: 100px;
+}
