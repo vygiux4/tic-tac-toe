@@ -85,14 +85,47 @@ const square9 = document.getElementById('tick9')
 
 })
 
-let xscore = 0
-let oscore = 0
+
+
+
+let player1 
+let  player2 
+
+
+ let start = document.getElementById('start')
+
+
+start.addEventListener('click',()  => {
+    square1.textContent = ''
+    square2.textContent = ''
+    square3.textContent = ''
+    square4.textContent = ''
+    square5.textContent = ''
+    square6.textContent = ''
+    square7.textContent = ''
+    square8.textContent = ''
+    square9.textContent = ''
+          
+
+      let player1name =  document.getElementById('player1')
+      let player2name = document.getElementById('player2')
+
+     player1 = prompt('Input player1 Name')
+     player2 = prompt('Input player2 Name')
+
+      player1name.textContent = ('X Player:'+ ' ' + player1)
+      player2name.textContent = ('O Player:'+ ' ' + player2)
+
+}) 
+
+
 
 function checkWinner() {
-                                                                                                          // check X
+
+               // check X
     if( square1.textContent == 'X' && square2.textContent == 'X' && square3.textContent == 'X'){
-        log('xwin')
-        score
+        
+        alert('xwon')
     } if (square1.textContent == 'X' && square4.textContent == 'X' && square7.textContent == 'X') {
         log('xwin')
     } if (square1.textContent == 'X' && square5.textContent == 'X' && square9.textContent == 'X') {

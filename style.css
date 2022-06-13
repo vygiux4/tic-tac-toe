@@ -4,12 +4,17 @@ body {
     justify-content: center;
     align-items: center;
     height: 90vh;
+    flex-direction: column;
+    gap: 30px;
 }
 
 
 
 
-
+.playercont {
+    display: flex;
+    gap: 200px;
+}
 
 .tickcontainer {
     display: grid;
@@ -22,6 +27,7 @@ body {
 
 .tickitem {
     display: flex;
+  
     background-color: rgb(104, 124, 124);
     justify-content: center;
     border: 2px solid rgb(105, 97, 97);
