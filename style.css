@@ -5,10 +5,23 @@ body {
     align-items: center;
     height: 90vh;
     flex-direction: column;
-    gap: 30px;
+    gap: 50px;
 }
 
-
+#winnerbox { 
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    width:600px;
+    height: 600px;
+    border:3px solid black;
+    font-size: 100px;
+    background-color: beige;
+    top: 250px;
+    opacity: 0.5;
+}
 
 
 .playercont {
@@ -28,16 +41,18 @@ body {
 .tickitem {
     display: flex;
   
-    background-color: rgb(104, 124, 124);
+   
     justify-content: center;
-    border: 2px solid rgb(105, 97, 97);
+    border: 2px solid rgb(221, 121, 54);
     height: 131px;
     width: 131px;
     align-items: center;
     
 }
 
-
+#turn {
+    margin-top: -100px;
+}
 .buttons {
     display: flex;
     flex-direction: column;
