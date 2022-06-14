@@ -1,53 +1,5 @@
 let log = console.log
 
-//BUTTON STUFF
-
-const btnX= document.getElementById('ix')
-const btnO = document.getElementById('oho')
-
-btnO.style.backgroundColor = 'rgb(216, 216, 216)'
-btnX.style.backgroundColor = 'rgb(216, 216, 216)'
-
-btnX.addEventListener('click',() => {
-    if (btnX.style.backgroundColor == 'rgb(216, 216, 216)') {
-      return    btnX.style.backgroundColor = 'red',
-          btnO.style.backgroundColor = 'rgb(216, 216, 216)'
-    } 
-    if (btnX.style.backgroundColor == 'red') {
-         return btnX.style.backgroundColor = 'rgb(216, 216, 216)'
-    }
-
-})
-btnO.addEventListener('click',() => {
-    if (btnO.style.backgroundColor == 'rgb(216, 216, 216)') {
-      return    btnO.style.backgroundColor = 'green',
-      btnX.style.backgroundColor = 'rgb(216, 216, 216)'
-    } 
-    if (btnO.style.backgroundColor == 'green') {
-         return btnO.style.backgroundColor = 'rgb(216, 216, 216)'
-        
-
-    }
-
-})
-
-// Displaying X  and O's
-document.getElementById('tickcontainer').addEventListener('click',get)
-
-function get(e) {
-
-    if(btnX.style.backgroundColor == 'red' && e.path[0].textContent == '' ) {
-        e.path[0].textContent = 'X'
-        checkWinner()
-    }
-    if (btnO.style.backgroundColor == 'green' && e.path[0].textContent == '') {
-        e.path[0].textContent = 'O'
-        checkWinner()
-    }
-}
-
-
-
 
 
 const square1 = document.getElementById('tick1')
@@ -64,19 +16,7 @@ const square9 = document.getElementById('tick9')
 
  const gameBoard = (function (one,two,three,four,five,six,seven,eight,nine)   {
 
-   const gameBoard =[one,two,three,four,five,six,seven,eight,nine]
-
-
-     square1.textContent = one
-     square2.textContent = two
-     square3.textContent = three
-     square4.textContent = four
-     square5.textContent = five
-     square6.textContent = six
-     square7.textContent = seven
-     square8.textContent = eight
-     square9.textContent = nine
-   
+   let  gameBoard =[one,two,three,four,five,six,seven,eight,nine]
 
    return {
        
@@ -88,14 +28,18 @@ const square9 = document.getElementById('tick9')
 
 
 
-let player1 
-let  player2 
 
-
+let turn = document.getElementById('turn')
  let start = document.getElementById('start')
+
+ 
 
 
 start.addEventListener('click',()  => {
+    document.getElementById('winnerbox').style.display = 'none'
+
+
+
     square1.textContent = ''
     square2.textContent = ''
     square3.textContent = ''
@@ -110,65 +54,109 @@ start.addEventListener('click',()  => {
       let player1name =  document.getElementById('player1')
       let player2name = document.getElementById('player2')
 
-     player1 = prompt('Input player1 Name')
-     player2 = prompt('Input player2 Name')
+     let createPlayer = () => {
+        return  playername = prompt('Input player1 Name')
+     }
+
+   let player1 = createPlayer()
+   let player2 = createPlayer()
+
+     turn.textContent = player1 +' '+ 'Turn'
 
       player1name.textContent = ('X Player:'+ ' ' + player1)
       player2name.textContent = ('O Player:'+ ' ' + player2)
-
-}) 
-
+      
 
 
-function checkWinner() {
+       let  get = (e) => {
 
-               // check X
-    if( square1.textContent == 'X' && square2.textContent == 'X' && square3.textContent == 'X'){
-        
-        alert('xwon')
-    } if (square1.textContent == 'X' && square4.textContent == 'X' && square7.textContent == 'X') {
-        log('xwin')
-    } if (square1.textContent == 'X' && square5.textContent == 'X' && square9.textContent == 'X') {
-        log('xwin')
-    } if(square3.textContent == 'X' && square5.textContent == 'X' && square7.textContent == 'X') {
-        log('xwin')
-    } if(square3.textContent == 'X' && square6.textContent == 'X' && square9.textContent == 'X') {
-        log('xwin')
-    } if(square2.textContent == 'X' && square5.textContent == 'X' && square8.textContent == 'X') {
-        log('xwin')
-    } if(square3.textContent == 'X' && square6.textContent == 'X' && square9.textContent == 'X') {
-        log('xwin')
-    }if(square4.textContent == 'X' && square5.textContent == 'X' && square6.textContent == 'X') {
-        log('xwin')
-    }if(square7.textContent == 'X' && square8.textContent == 'X' && square9.textContent == 'X') {
-        log('xwin')                          
-    }  
-                                                                                                             //check O
-    if( square1.textContent == 'O' && square2.textContent == 'O' && square3.textContent == 'O'){
-        log('OWIN')
-    } if (square1.textContent == 'O' && square4.textContent == 'O' && square7.textContent == 'O') {
-        log('OWIN')
-    } if (square1.textContent == 'O' && square5.textContent == 'O' && square9.textContent == 'O') {
-        log('OWIN')
-    } if(square3.textContent == 'O' && square5.textContent == 'O' && square7.textContent == 'O') {
-        log('OWIN')
-    } if(square3.textContent == 'O' && square6.textContent == 'O' && square9.textContent == 'O') {
-        log('OWIN')
-    } if(square2.textContent == 'O' && square5.textContent == 'O' && square8.textContent == 'O') {
-        llog('OWIN')
-    } if(square3.textContent == 'O' && square6.textContent == 'O' && square9.textContent == 'O') {
-        log('OWIN')
-    }if(square4.textContent == 'O' && square5.textContent == 'O' && square6.textContent == 'O') {
-        log('OWIN')
-    }if(square7.textContent == 'O' && square8.textContent == 'O' && square9.textContent == 'O') {
-        log('OWIN')                        
-    }  
-   
+        if(turn.textContent == player1 +' '+ 'Turn' && e.path[0].textContent == '' ) {
+            e.path[0].textContent = 'X'
+            turn.textContent = player2 +' '+ 'Turn'
+            checkWinner()
+            
+        }
+        if (turn.textContent == player2 +' '+ 'Turn'&& e.path[0].textContent == '') {
+            e.path[0].textContent = 'O'
+            turn.textContent = player1 +' '+ 'Turn'
+            checkWinner()
+        }
+    }
+
+    document.getElementById('tickcontainer').addEventListener('click',get)
+
+     let checkWinner = () => {
+        let winner =  document.getElementById('textwinner')
     
-     if(square1.textContent !== '' &&  square2.textContent !== '' && square3.textContent !== '' &&  square4.textContent !== '' && square5.textContent !== '' && square6.textContent !== '' && square7.textContent !== '' && square8.textContent !== '' && square9.textContent !== '' ) {
-      log('gg')
-     }
-  
+                   // check X
+        if( square1.textContent == 'X' && square2.textContent == 'X' && square3.textContent == 'X'){
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1
+        } if (square1.textContent == 'X' && square4.textContent == 'X' && square7.textContent == 'X') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1
+        } if (square1.textContent == 'X' && square5.textContent == 'X' && square9.textContent == 'X') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1
+        } if(square3.textContent == 'X' && square5.textContent == 'X' && square7.textContent == 'X') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1
+        } if(square3.textContent == 'X' && square6.textContent == 'X' && square9.textContent == 'X') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1
+        } if(square2.textContent == 'X' && square5.textContent == 'X' && square8.textContent == 'X') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1
+        } if(square3.textContent == 'X' && square6.textContent == 'X' && square9.textContent == 'X') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1
+        }if(square4.textContent == 'X' && square5.textContent == 'X' && square6.textContent == 'X') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1
+        }if(square7.textContent == 'X' && square8.textContent == 'X' && square9.textContent == 'X') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player1                      
+        }  
+                                                                                                                 //check O
+        if( square1.textContent == 'O' && square2.textContent == 'O' && square3.textContent == 'O'){
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2
+        } if (square1.textContent == 'O' && square4.textContent == 'O' && square7.textContent == 'O') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2
+        } if (square1.textContent == 'O' && square5.textContent == 'O' && square9.textContent == 'O') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2
+        } if(square3.textContent == 'O' && square5.textContent == 'O' && square7.textContent == 'O') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2
+        } if(square3.textContent == 'O' && square6.textContent == 'O' && square9.textContent == 'O') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2
+        } if(square2.textContent == 'O' && square5.textContent == 'O' && square8.textContent == 'O') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2
+        } if(square3.textContent == 'O' && square6.textContent == 'O' && square9.textContent == 'O') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2
+        }if(square4.textContent == 'O' && square5.textContent == 'O' && square6.textContent == 'O') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2
+        }if(square7.textContent == 'O' && square8.textContent == 'O' && square9.textContent == 'O') {
+            document.getElementById('winnerbox').style.display = 'flex'
+            winner.textContent =  player2                      
+        }  
+       
+        
+         if(square1.textContent !== '' &&  square2.textContent !== '' && square3.textContent !== '' &&  square4.textContent !== '' && square5.textContent !== '' && square6.textContent !== '' && square7.textContent !== '' && square8.textContent !== '' && square9.textContent !== '' ) {
+            document.getElementById('winnerbox').style.display = 'flex'
+            document.getElementById('winner').textContent =  'TIE'
+         }
+    
+          
+
+} 
+})
 
 
 
@@ -184,7 +172,6 @@ function checkWinner() {
 
 
 
-}
 
 
 
@@ -207,12 +194,8 @@ function checkWinner() {
 
 
 
- const player =  (name) =>{
-     this.name = name 
- return {
-     name
- }
- }
+
+
 
 
 
