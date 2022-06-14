@@ -54,12 +54,12 @@ start.addEventListener('click',()  => {
       let player1name =  document.getElementById('player1')
       let player2name = document.getElementById('player2')
 
-     let createPlayer = () => {
-        return  playername = prompt('Input player1 Name')
+     let createPlayer = (mark) => {
+        return  playername = prompt('Input player '+ mark +' Name')
      }
 
-   let player1 = createPlayer()
-   let player2 = createPlayer()
+   let player1 = createPlayer('x')
+   let player2 = createPlayer('o')
 
      turn.textContent = player1 +' '+ 'Turn'
 
